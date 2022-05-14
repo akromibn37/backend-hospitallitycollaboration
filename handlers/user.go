@@ -47,7 +47,7 @@ func UserCreate(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_CREATE, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -97,7 +97,7 @@ func UserCreateByAdmin(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_CREATE_BY_ADMIN, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -147,7 +147,7 @@ func UserLogin(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_LOGIN, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -197,7 +197,7 @@ func UserGetByUserId(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_GET_BY_USERID, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -247,7 +247,7 @@ func UserUpdatePassword(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_UPDATE_PASSWORD, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -297,7 +297,7 @@ func UserUpdateData(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(userRequest)
+	util.LogRequest(constant.SERVICE_USER_UPDATE_DATA, userRequest)
 
 	//callservice
 	getUserservice := &service.User{}
@@ -327,6 +327,7 @@ func UserGetAll(c *gin.Context) {
 	timeLog.FuncNm = constant.SERVICE_USER_GET_ALL_DATA
 	timeLog.TimeIn = time.Now()
 
+	util.LogRequest(constant.SERVICE_USER_GET_ALL_DATA, nil)
 	//callservice
 	getUserservice := &service.User{}
 	responseStruct, err := getUserservice.UserGetAll(&timeLog)

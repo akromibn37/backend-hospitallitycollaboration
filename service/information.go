@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"time"
 
 	databaseUser "github.com/akromibn37/hospitalityCollaboration/dao/database/users"
@@ -14,7 +13,6 @@ type Information struct {
 
 func (i *Information) InformationGetProfile(req *apimodelInformation.InformationGetProfileRequest, t *logging.Timelog) (res *apimodelInformation.InformationGetProfileResponse, err error) {
 
-	fmt.Println("req:", req)
 	t.TimeInDb = time.Now()
 	data, err := databaseUser.GetProfile(req.UserId)
 	if err != nil {

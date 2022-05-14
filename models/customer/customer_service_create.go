@@ -3,11 +3,12 @@ package apimodelCustomer
 import "gopkg.in/go-playground/validator.v9"
 
 type CustomerServiceCreateRequest struct {
-	CustomerId    string  `json:"customer_id"`
-	ServiceId     *string `json:"svc_id"`
-	HospitalityId *string `json:"hos_id"`
-	UserId        *string `json:"user_id"`
-	Status        *string `json:"status"`
+	CustomerId string  `json:"customer_id" validate:"required"`
+	ServiceId  *string `json:"svc_id"`
+	UserId     *string `json:"user_id"`
+	Status     *string `json:"status"`
+	StartDate  *string `json:"start_date"`
+	EndDate    *string `json:"end_date"`
 }
 
 type CustomerServiceCreateResponse struct {

@@ -68,8 +68,10 @@ const (
 	USER_ID              = "User_ID"
 	SERVICE_ID           = "Service_ID"
 	HOSPITALITY_ID       = "HOSPITALITY_ID"
+	HOSPITALITY_TYPE_ID  = "HOSPITALITY_TYPE_ID"
 	CUSTOMER_PROFILE_ID  = "CUSTOMER_PROFILE_ID"
 	CUSTOMER_SERVICE_ID  = "CUSTOMER_SERVICE_ID"
+	CUSTOMER_BOOKING_ID  = "CUSTOMER_BOOKING_ID"
 	DOC_ID               = "DOC_ID"
 	EXERCISE_ID          = "Exercise_ID"
 	EXERCISE_QUESTION_ID = "Exercise_Question_ID"
@@ -127,10 +129,16 @@ const (
 	SERVICE_SERVICE_GET_ALL       = "ServiceGetAll"
 	SERVICE_SERVICE_CREATE        = "ServiceCreate"
 	SERVICE_SERVICE_UPDATE        = "ServiceUpdate"
+	SERVICE_SERVICE_DELETE        = "ServiceDelete"
 
 	SERVICE_HOSPITALITY_GET_ALL = "HospitalityGetAll"
 	SERVICE_HOSPITALITY_CREATE  = "HospitalityCreate"
 	SERVICE_HOSPITALITY_UPDATE  = "HospitalityUpdate"
+
+	SERVICE_HOSPITALITY_TYPE_GET_ALL = "HospitalityTypeGetAll"
+	SERVICE_HOSPITALITY_TYPE_CREATE  = "HospitalityTypeCreate"
+	SERVICE_HOSPITALITY_TYPE_UPDATE  = "HospitalityTypeUpdate"
+	SERVICE_HOSPITALITY_TYPE_DELETE  = "HospitalityTypeDelete"
 
 	SERVICE_CUSTOMER_PROFILE_GET_ALL = "CustomerProfileGetAll"
 	SERVICE_CUSTOMER_PROFILE_CREATE  = "CustomerProfileCreate"
@@ -139,6 +147,12 @@ const (
 	SERVICE_CUSTOMER_SERVICE_GET_ALL = "CustomerServiceGetAll"
 	SERVICE_CUSTOMER_SERVICE_CREATE  = "CustomerServiceCreate"
 	SERVICE_CUSTOMER_SERVICE_UPDATE  = "CustomerServiceUpdate"
+
+	SERVICE_CUSTOMER_BOOKING_GET_ALL = "CustomerBookingGetAll"
+	SERVICE_CUSTOMER_BOOKING_GET     = "CustomerBookingGet"
+	SERVICE_CUSTOMER_BOOKING_CREATE  = "CustomerBookingCreate"
+	SERVICE_CUSTOMER_BOOKING_UPDATE  = "CustomerBookingUpdate"
+	SERVICE_CUSTOMER_BOOKING_DELETE  = "CustomerBookingDelete"
 
 	SERVICE_GET_BASIC_USER         = "GetBasicUser"
 	SERVICE_GET_ALL_USER           = "GetAllUser"

@@ -6,7 +6,6 @@ import (
 	"net/http"
 
 	"github.com/akromibn37/hospitalityCollaboration/dao/database"
-	"github.com/akromibn37/hospitalityCollaboration/dao/redis"
 	"github.com/akromibn37/hospitalityCollaboration/pkg/logging"
 	"github.com/akromibn37/hospitalityCollaboration/pkg/setting"
 	"github.com/akromibn37/hospitalityCollaboration/pkg/util"
@@ -17,7 +16,7 @@ import (
 func init() {
 	setting.Setup()
 	database.Setup()
-	redis.Setup()
+	// redis.Setup()
 	logging.Setup()
 	util.Setup()
 }

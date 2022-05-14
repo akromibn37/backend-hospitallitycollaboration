@@ -59,3 +59,16 @@ func (s *Service) ServiceUpdate(req *apimodelService.ServiceUpdateRequest, t *lo
 
 	return res, nil
 }
+
+func (s *Service) ServiceDelete(req *apimodelService.ServiceDeleteRequest, t *logging.Timelog) (res *apimodelService.ServiceDeleteResponse, err error) {
+	t.TimeInDb = time.Now()
+	if err != nil {
+		return nil, err
+	}
+	err = databaseService.DeleteService(req)
+
+	t.TimeOutDb = time.Now()
+	res = &apimodelService.ServiceDeleteResponse{}
+
+	return res, nil
+}

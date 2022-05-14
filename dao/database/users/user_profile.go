@@ -2,7 +2,6 @@ package databaseUser
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	database "github.com/akromibn37/hospitalityCollaboration/dao/database"
@@ -115,7 +114,6 @@ func CreateProfile(req *apimodelInformation.InformationUpdateProfileRequest) (er
 
 //CreateProfile
 func CreateProfileByRegister(userId string) (err error) {
-	fmt.Println("userId:", userId)
 	db := database.GetDB()
 	ctx := context.Background()
 	tx, err := db.BeginTx(ctx, nil)

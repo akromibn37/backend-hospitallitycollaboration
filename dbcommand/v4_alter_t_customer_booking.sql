@@ -1,0 +1,12 @@
+CREATE TABLE `t_customer_booking` (
+  `CUS_BK_ID` varchar(20) NOT NULL,
+  `CUS_SVC_ID` varchar(20) NOT NULL,
+  `HOS_ID` varchar(255) DEFAULT NULL,
+  `START_DATE` datetime DEFAULT NULL,
+  `END_DATE` datetime DEFAULT NULL,
+  `CREATE_BY` varchar(255) DEFAULT NULL,
+  `CREATE_DATE` datetime DEFAULT NULL,
+  `UPDATE_BY` varchar(255) DEFAULT NULL,
+  `UPDATE_DATE` datetime DEFAULT NULL,
+  PRIMARY KEY (`CUS_BK_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

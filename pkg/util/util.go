@@ -25,14 +25,20 @@ func LogError(httpCode int, errCode int, msg string) {
 	return
 }
 
-func LogRequest(data interface{}) {
-	req := fmt.Sprintf("%#v", data)
-	app.LogInterfaceRequest(req)
+func LogRequest(serviceName string, data interface{}) {
+	req := fmt.Sprintf("%+v", data)
+	app.LogInterfaceRequest(serviceName, req)
+	return
+}
+
+func LogInformation(serviceName string, data interface{}) {
+	req := fmt.Sprintf("%v", &data)
+	app.LogInterfaceInformation(serviceName, req)
 	return
 }
 
 func LogResponse(httpCode int, data interface{}) {
-	res := fmt.Sprintf("%#v", data)
+	res := fmt.Sprintf("%+v", data)
 	app.LogInterfaceResponse(httpCode, res)
 	return
 }

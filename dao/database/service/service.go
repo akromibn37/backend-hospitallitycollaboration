@@ -41,6 +41,7 @@ func GetServiceAll() (res []*TService, err error) {
 		}
 		resp = append(resp, tmpResp)
 	}
+	util.LogInformation("GetServiceAll", resp)
 
 	return resp, nil
 }
@@ -87,6 +88,29 @@ func UpdateService(req *apimodelService.ServiceUpdateRequest) (err error) {
 	}
 	statement := "UPDATE hospitality.t_service SET SVC_NAME=?, SVC_DESCRIPTION=?, UPDATE_DATE=? WHERE svc_id=?;"
 	_, err = tx.Query(statement, req.ServiceName, req.ServiceDescription, util.TimeNow(), req.ServiceId)
+	if err != nil {
+		tx.Rollback()
+		return err
+	}
+
+	err = tx.Commit()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+//Add New User
+func DeleteService(req *apimodelService.ServiceDeleteRequest) (err error) {
+	db := database.GetDB()
+	ctx := context.Background()
+	tx, err := db.BeginTx(ctx, nil)
+	if err != nil {
+		return err
+	}
+	statement := "DELETE FROM hospitality.t_service WHERE svc_id=?;"
+	_, err = tx.Query(statement, req.ServiceId)
 	if err != nil {
 		tx.Rollback()
 		return err

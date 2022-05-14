@@ -35,6 +35,7 @@ func InitRouters() *gin.Engine {
 		service.GET("/get/all", handlers.ServiceGetAll)
 		service.POST("/create", handlers.ServiceCreate)
 		service.POST("/update", handlers.ServiceUpdate)
+		service.POST("/delete", handlers.ServiceDelete)
 	}
 
 	information.Use()
@@ -51,6 +52,10 @@ func InitRouters() *gin.Engine {
 		hospitality.GET("/get/all", handlers.HospitalityGetAll)
 		hospitality.POST("/create", handlers.HospitalityCreate)
 		hospitality.POST("/update", handlers.HospitalityUpdate)
+		hospitality.GET("/type/get/all", handlers.HospitalityTypeGetAll)
+		hospitality.POST("/type/create", handlers.HospitalityTypeCreate)
+		hospitality.POST("/type/update", handlers.HospitalityTypeUpdate)
+		hospitality.POST("/type/delete", handlers.HospitalityTypeDelete)
 	}
 
 	customer.Use()
@@ -60,6 +65,11 @@ func InitRouters() *gin.Engine {
 		customer.GET("/service/get/all", handlers.CustomerServiceGetAll)
 		customer.POST("/service/update", handlers.CustomerServiceUpdate)
 		customer.POST("/service/create", handlers.CustomerServiceCreate)
+		customer.POST("/booking/get/all", handlers.CustomerBookingGetAll)
+		customer.POST("/booking/get", handlers.CustomerBookingGet)
+		customer.POST("/booking/update", handlers.CustomerBookingUpdate)
+		customer.POST("/booking/create", handlers.CustomerBookingCreate)
+		customer.POST("/booking/delete", handlers.CustomerBookingDelete)
 	}
 
 	//create user on table t_user_master,t_user_common

@@ -49,8 +49,8 @@ type Database struct {
 var DatabaseSetting = &Database{}
 
 type Redis struct {
-	Type        string
-	Host        string
+	Type string
+	Host string
 }
 
 var RedisSetting = &Redis{}
@@ -64,6 +64,7 @@ func Setup() {
 	if err != nil {
 		log.Fatalf("setting.Setup, fail to parse 'conf/app.ini': %v", err)
 	}
+	log.Println("config:", cfg)
 
 	mapTo("app", AppSetting)
 	mapTo("server", ServerSetting)

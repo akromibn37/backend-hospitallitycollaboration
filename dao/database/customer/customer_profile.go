@@ -15,6 +15,7 @@ type TCustomerProfile struct {
 	Name        string `json:"name"`
 	LineId      string `json:"line_id"`
 	PhoneNumber string `json:"phone_number"`
+	Nationality string `json:"nationality"`
 	CreateBy    string `json:"create_by"`
 	CreateDate  string `json:"create_date"`
 	UpdateBy    string `json:"update_by"`
@@ -35,7 +36,7 @@ func GetCustomerProfileAll() (res []*TCustomerProfile, err error) {
 	}
 	for results.Next() {
 		tmpResp := new(TCustomerProfile)
-		err = results.Scan(&tmpResp.CustomerId, &tmpResp.Name, &tmpResp.LineId, &tmpResp.PhoneNumber, &tmpResp.CreateBy, &tmpResp.CreateDate, &tmpResp.UpdateBy, &tmpResp.UpdateDate)
+		err = results.Scan(&tmpResp.CustomerId, &tmpResp.Name, &tmpResp.LineId, &tmpResp.PhoneNumber, &tmpResp.CreateBy, &tmpResp.CreateDate, &tmpResp.UpdateBy, &tmpResp.UpdateDate, &tmpResp.Nationality)
 		if err != nil {
 			log.Print("err:", err)
 			return nil, err
@@ -64,8 +65,8 @@ func CreateCustomerProfile(req *apimodelCustomer.CustomerProfileCreateRequest, c
 	if count != 0 {
 		return errors.New("CustomerProfile Name repeated")
 	}
-	statement = "INSERT INTO hospitality.t_customer_profile (customer_id, name, line_id, phone_number, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE) VALUES(?, ?, ?, ?, ?, ?, ?, ?);"
-	_, err = tx.Query(statement, customerId, req.Name, req.LineId, req.PhoneNumber, "SYSTEM", util.TimeNow(), "SYSTEM", util.TimeNow())
+	statement = "INSERT INTO hospitality.t_customer_profile (customer_id, name, line_id, phone_number,nationality, CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);"
+	_, err = tx.Query(statement, customerId, req.Name, req.LineId, req.PhoneNumber, req.Nationality, "SYSTEM", util.TimeNow(), "SYSTEM", util.TimeNow())
 	if err != nil {
 		tx.Rollback()
 		return err
@@ -86,8 +87,8 @@ func UpdateCustomerProfile(req *apimodelCustomer.CustomerProfileUpdateRequest) (
 	if err != nil {
 		return err
 	}
-	statement := "UPDATE hospitality.t_customer_profile SET name=?, line_id=?, phone_number=?, UPDATE_DATE=? WHERE customer_id=?;"
-	_, err = tx.Query(statement, req.Name, req.LineId, req.PhoneNumber, util.TimeNow(), req.CustomerId)
+	statement := "UPDATE hospitality.t_customer_profile SET name=?, line_id=?, phone_number=?, nationality=?, UPDATE_DATE=? WHERE customer_id=?;"
+	_, err = tx.Query(statement, req.Name, req.LineId, req.PhoneNumber, req.Nationality, util.TimeNow(), req.CustomerId)
 	if err != nil {
 		tx.Rollback()
 		return err

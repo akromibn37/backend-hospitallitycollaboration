@@ -25,8 +25,14 @@ func LogError(httpCode int, errMsg string, msg string) {
 }
 
 //LogInterface logs interface logs request
-func LogInterfaceRequest(data interface{}) {
-	logging.Info("Request: ", data)
+func LogInterfaceRequest(serviceName string, data interface{}) {
+	logging.Info("Request: ", serviceName, data)
+	return
+}
+
+//LogInterface logs interface logs request
+func LogInterfaceInformation(serviceName string, data interface{}) {
+	logging.Info("Information: ", serviceName, data)
 	return
 }
 

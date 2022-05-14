@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 
 	"time"
@@ -30,7 +29,6 @@ func InformationGetProfile(c *gin.Context) {
 
 	request, err := c.GetRawData()
 	informationRequest := apimodelInformation.InformationGetProfileRequest{}
-	fmt.Println("request:", informationRequest)
 
 	if err != nil {
 		util.LogError(http.StatusBadRequest, e.GET_REQUEST_FAIL, err.Error())
@@ -49,7 +47,7 @@ func InformationGetProfile(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(informationRequest)
+	util.LogRequest(constant.SERVICE_INFORMATION_GET_PROFILE, informationRequest)
 
 	//callservice
 	getInformationService := &service.Information{}
@@ -82,8 +80,6 @@ func InformationGetAllProfile(c *gin.Context) {
 	request, err := c.GetRawData()
 	informationRequest := apimodelInformation.InformationGetAllProfileRequest{}
 
-	fmt.Println("request:", request)
-	fmt.Println("request error:", err)
 	if err != nil {
 		util.LogError(http.StatusBadRequest, e.GET_REQUEST_FAIL, err.Error())
 		appG.Response(http.StatusBadRequest, e.GET_REQUEST_FAIL, err.Error())
@@ -101,7 +97,7 @@ func InformationGetAllProfile(c *gin.Context) {
 	// 	appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 	// 	return
 	// }
-	util.LogRequest(informationRequest)
+	util.LogRequest(constant.SERVICE_INFORMATION_GET_ALL_PROFILE, informationRequest)
 
 	//callservice
 	getInformationService := &service.Information{}
@@ -151,7 +147,7 @@ func InformationUpdateProfile(c *gin.Context) {
 		appG.Response(http.StatusBadRequest, e.INVALID_PARAMS, err.Error())
 		return
 	}
-	util.LogRequest(informationRequest)
+	util.LogRequest(constant.SERVICE_INFORMATION_UPDATE_PROFILE, informationRequest)
 
 	//callservice
 	getInformationService := &service.Information{}

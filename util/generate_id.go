@@ -52,6 +52,10 @@ func GenerateID(typ string) string {
 		preFix = "CUS"
 	case constant.CUSTOMER_SERVICE_ID:
 		preFix = "CSI"
+	case constant.CUSTOMER_BOOKING_ID:
+		preFix = "CBK"
+	case constant.HOSPITALITY_TYPE_ID:
+		preFix = "HOSTYP"
 	default:
 		preFix = "USI"
 	}

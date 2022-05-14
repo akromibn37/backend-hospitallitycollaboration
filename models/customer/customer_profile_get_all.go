@@ -14,6 +14,7 @@ type CustomerProfileDetail struct {
 	Name        string `json:"name"`
 	LineId      string `json:"line_id"`
 	PhoneNumber string `json:"phone_number"`
+	Nationality string `json:"nationality"`
 }
 
 func (o *CustomerProfileGetAllRequest) Validate() error {
