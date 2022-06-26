@@ -49,7 +49,7 @@ func (o *User) UserCreate(req *apimodelUser.UserCreateRequest, t *logging.Timelo
 	if err != nil {
 		return nil, err
 	}
-	err = databaseUser.CreateProfileByRegister(userId)
+	err = databaseUser.CreateProfileByRegister(userId, req)
 	if err != nil {
 		return nil, err
 	}

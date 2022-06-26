@@ -6,6 +6,7 @@ import (
 
 	database "github.com/akromibn37/hospitalityCollaboration/dao/database"
 	apimodelInformation "github.com/akromibn37/hospitalityCollaboration/models/information"
+	apimodel "github.com/akromibn37/hospitalityCollaboration/models/user"
 	"github.com/akromibn37/hospitalityCollaboration/pkg/util"
 )
 
@@ -113,7 +114,7 @@ func CreateProfile(req *apimodelInformation.InformationUpdateProfileRequest) (er
 }
 
 //CreateProfile
-func CreateProfileByRegister(userId string) (err error) {
+func CreateProfileByRegister(userId string, req *apimodel.UserCreateRequest) (err error) {
 	db := database.GetDB()
 	ctx := context.Background()
 	tx, err := db.BeginTx(ctx, nil)
@@ -121,8 +122,8 @@ func CreateProfileByRegister(userId string) (err error) {
 		return err
 	}
 
-	statement := "INSERT INTO hospitality.t_user_profile (user_id, NAME, SURNAME, DATE_OF_BIRTH, IDENTIFIER, PHONE_NUMBER, EMAIL, ADDR, SUB_DICTRICT, DISTRICT, PROVINCE, POSTAL_CODE,  CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE) VALUES(?, '', '', '', '', '', '', '', '', '', '','','', ?, '', ?);"
-	_, err = tx.Query(statement, userId, util.TimeNow(), util.TimeNow())
+	statement := "INSERT INTO hospitality.t_user_profile (user_id, NAME, SURNAME, DATE_OF_BIRTH, IDENTIFIER, PHONE_NUMBER, EMAIL, ADDR, SUB_DICTRICT, DISTRICT, PROVINCE, POSTAL_CODE,  CREATE_BY, CREATE_DATE, UPDATE_BY, UPDATE_DATE) VALUES(?, ?, ?, '', '', ?, ?, '', '', '', '','','', ?, '', ?);"
+	_, err = tx.Query(statement, userId, req.FirstName, req.LastName, req.PhoneNumber, req.Email, util.TimeNow(), util.TimeNow())
 	if err != nil {
 		tx.Rollback()
 		return err
